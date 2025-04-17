@@ -9,7 +9,8 @@
 ---
 
 ## 🖥️ Inside the VM
-https://github.com/ananta-kandel/Load-Balancing-with-Nginx-and-Docker-Containers-in-VM-/blob/main/InsideVMWorkFlow.png
+> \`![Workflow](https://github.com/ananta-kandel/Load-Balancing-with-Nginx-and-Docker-Containers-in-VM-/blob/main/InsideVMWorkFlow.png)\`
+
 ### ✅ VM Setup
 - VM provisioned using **Vagrant**.
 - VM runs **two Docker containers**, each serving a simple web application.
@@ -24,8 +25,7 @@ Command used to verify containers:
 docker ps
 \`\`\`
 
-
-
+> \`![Workflow](https://github.com/ananta-kandel/Load-Balancing-with-Nginx-and-Docker-Containers-in-VM-/blob/main/DockerContainerRunning.png)\`
 ---
 
 ## ⚙️ Nginx Load Balancing (Round-Robin) – Inside the VM
@@ -96,6 +96,7 @@ for i in {1..10}; do curl "http://localhost/" && echo; done
 ### ✅ Output
 You should observe alternating responses from Container 1 and Container 2.
 
+https://github.com/ananta-kandel/Load-Balancing-with-Nginx-and-Docker-Containers-in-VM-/blob/main/DockerContainerRunning.png
 
 
 ---
