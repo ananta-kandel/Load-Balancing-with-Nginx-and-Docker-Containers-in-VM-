@@ -1,57 +1,74 @@
-# Load-Balancing-with-Nginx-and-Docker-Containers-in-VM
+⚙️ Nginx Load Balancing (Round-Robin) – Inside the VM
+Nginx installed and configured inside the VM to distribute traffic between two containers using round-robin method.
 
-Load Balancing with Nginx and Docker Containers in VM 
+🔧 Nginx Config (VM)
+nginx
+Copy
+Edit
+upstream backend {
+    server localhost:8082;
+    server localhost:8081;
+}
 
-WorkFlow
+server {
+    listen 80;
+    server_name 192.168.32.130;
 
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
 
-Inside VM:
+        proxy_connect_timeout 90;
+        proxy_send_timeout 90;
+        proxy_read_timeout 90;
+    }
+}
+🖥️ Host Machine Configuration
+Nginx is also installed on the host machine.
 
+It acts as a reverse proxy that forwards requests to the VM's Nginx.
 
+🔧 Nginx Config (Host)
+nginx
+Copy
+Edit
+server {
+    listen       80;
+    server_name  localhost;
 
+    location / {
+        proxy_pass         http://192.168.32.130/;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection 'upgrade';
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+📈 Results
+Tested with curl from host machine to the VM IP. The VM's Nginx distributes the requests between the containers using round-robin.
 
+🔁 Test Command
+bash
+Copy
+Edit
+for i in {1..10}; do curl "http://localhost/" && echo; done
+✅ Output
+You should observe alternating responses from Container 1 and Container 2.
 
-VM Setup
+🖼️ Insert screenshot of terminal output here showing round-robin responses
 
-VM is setup using vagrant.
-A virtual machine is configured to run two Docker containers.
-Containers are running web applications on:
-Port 8081 (Container 1)
-Port 8082 (Container 2)
+📎 Notes
+Ensure the VM's IP (192.168.32.130) is accessible from the host.
 
+Nginx services must be restarted after every configuration change:
 
-Docker Container Verification
-
-Command use: docker ps 
-
-
-Nginx Load Balancing Configuration (Round-Robin Technique)
-Inside the VM:
-Nginx is installed and configured as a reverse proxy. A round-robin load balancing technique is implemented, and requests to Nginx are distributed between the two containers.
- 
-
-
-
-
-
-
-
-
-
-
-
-Host Machine Configuration
-Nginx is also installed on the host machine.Configured to pass incoming requests to the VM’s Nginx (proxy chaining).Ensures that the containers running inside the VM are accessible from the host machine.
-
-   
-
-
-Results:
-
-Curl from Host Machine to VM’s IP, VM provide response to host machine as two containers gives.
-
-
-Commond use: 
-for i in {1..100}; do curl "http://192.168.32.130/" && echo  ;done
-
-
+bash
+Copy
+Edit
+sudo systemctl restart nginx
+If you'd like help adding the images to GitHub or need a diagram created, I can help generate one or guide you step-by-step!
