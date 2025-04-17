@@ -4,16 +4,12 @@
 
 **Architecture:**
 
-
-
-> 🖼️ **Insert Workflow Diagram Here**  
-> You can upload your image to GitHub and reference it like this:  
 > \`![Workflow](https://github.com/ananta-kandel/Load-Balancing-with-Nginx-and-Docker-Containers-in-VM-/blob/main/WorkFlow1.png)\`
 
 ---
 
 ## 🖥️ Inside the VM
-
+https://github.com/ananta-kandel/Load-Balancing-with-Nginx-and-Docker-Containers-in-VM-/blob/main/InsideVMWorkFlow.png
 ### ✅ VM Setup
 - VM provisioned using **Vagrant**.
 - VM runs **two Docker containers**, each serving a simple web application.
