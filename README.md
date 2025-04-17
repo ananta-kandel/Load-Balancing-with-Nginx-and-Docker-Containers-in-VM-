@@ -1,22 +1,10 @@
-#!/bin/bash
-
-cat << 'EOF' > README.md
 # 🔄 Load Balancing with Nginx and Docker Containers in a Virtual Machine
 
 ## 📌 Workflow Overview
 
 **Architecture:**
 
-\`\`\`
-Host Machine (Browser / Curl)
-          ↓
-     Nginx on Host
-          ↓
-     Nginx on VM
-       ↙      ↘
-  Container 1  Container 2
- (Port 8081)   (Port 8082)
-\`\`\`
+
 
 > 🖼️ **Insert Workflow Diagram Here**  
 > You can upload your image to GitHub and reference it like this:  
@@ -112,7 +100,7 @@ for i in {1..10}; do curl "http://localhost/" && echo; done
 ### ✅ Output
 You should observe alternating responses from Container 1 and Container 2.
 
-> 🖼️ **Insert screenshot of terminal output here showing round-robin responses**
+
 
 ---
 
@@ -123,6 +111,3 @@ You should observe alternating responses from Container 1 and Container 2.
 \`\`\`bash
 sudo systemctl restart nginx
 \`\`\`
-EOF
-
-echo "✅ README.md has been generated!"
