@@ -8,7 +8,7 @@
 
 > 🖼️ **Insert Workflow Diagram Here**  
 > You can upload your image to GitHub and reference it like this:  
-> \`![Workflow](path/to/image.png)\`
+> \`![Workflow](https://github.com/ananta-kandel/Load-Balancing-with-Nginx-and-Docker-Containers-in-VM-/blob/main/WorkFlow1.png)\`
 
 ---
 
@@ -28,7 +28,7 @@ Command used to verify containers:
 docker ps
 \`\`\`
 
-> 🖼️ **Insert screenshot of \`docker ps\` output here**
+
 
 ---
 
