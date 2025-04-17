@@ -97,7 +97,7 @@ for i in {1..10}; do curl "http://localhost/" && echo; done
 You should observe alternating responses from Container 1 and Container 2.
 
 
-> \`![Workflow](https://github.com/ananta-kandel/Load-Balancing-with-Nginx-and-Docker-Containers-in-VM-/blob/main/Screenshot%202025-04-17%20at%2011.30.18%E2%80%AFpm.png)\`
+> \`![Workflow](https://github.com/ananta-kandel/Load-Balancing-with-Nginx-and-Docker-Containers-in-VM-/blob/main/Output.png)\`
 ---
 
 
